@@ -33,7 +33,7 @@ compose.desktop {
         mainClass = "com.dkels_investment.barcode.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
             packageName = "com.dkels_investment.barcode"
             packageVersion = "1.0.0"
         }

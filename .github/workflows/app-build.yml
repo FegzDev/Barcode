@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-windows-msi:
+  build-windows-exe:
     runs-on: windows-latest
 
     steps:
@@ -21,60 +21,12 @@ jobs:
       - name: Ensure Gradle Wrapper is Executable
         run: chmod +x gradlew
 
-      - name: Build Msi App
-        run: ./gradlew :app:packageMsi
+      - name: Build Exe App
+        run: ./gradlew :app:packageExe
 
-      - name: Upload Msi Build Artifacts
+      - name: Upload Exe Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Windows-Msi
-          path: app/build/compose/binaries/main/msi/**/*
-          if-no-files-found: error
-
-  build-macos-dmg:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'gradle'
-
-      - name: Build Dmg App
-        run: ./gradlew :app:packageDmg
-
-      - name: Upload Dmg Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: MacOS-Dmg
-          path: app/build/compose/binaries/main/dmg/**/*
-          if-no-files-found: error
-
-  build-linux-deb:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'gradle'
-
-      - name: Build Deb App
-        run: ./gradlew :app:packageDeb
-
-      - name: Upload Deb Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: Linux-Deb
-          path: app/build/compose/binaries/main/deb/**/*
+          name: Windows-Exe
+          path: app/build/compose/binaries/main/exe/**/*
           if-no-files-found: error
