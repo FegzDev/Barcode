@@ -22,11 +22,11 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Exe App
-        run: ./gradlew :app:packageExe
+        run: ./gradlew :composeApp:packageExe
 
       - name: Upload Exe Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Windows-Exe
-          path: app/build/compose/binaries/main/exe/**/*
+          path: composeApp/build/compose/binaries/main/exe/**/*
           if-no-files-found: error
